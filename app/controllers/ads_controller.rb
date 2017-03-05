@@ -48,8 +48,9 @@ class AdsController < ApplicationController
     #   ads_fixed << ad
     # end
     # render json: ads_fixed
-    ad_fixed  = Ad.joins(:ads_hits).all.group(:id).group(:name,:source).size
-    render json: ad_fixed
+    ad_select  = Ad.joins(:ads_hits).all.group(:id).group(:name,:source).size
+
+    render json: Array(ad_select)
   end
   private
     # Use callbacks to share common setup or constraints between actions.
