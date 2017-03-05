@@ -1,0 +1,2 @@
+class AdsHit < ApplicationRecord
+end

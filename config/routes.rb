@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :ads_hits
   resources :ads_relations
   resources :ads
   root 'ads#index'
