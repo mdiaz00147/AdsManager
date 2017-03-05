@@ -10,13 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170304221814) do
+ActiveRecord::Schema.define(version: 20170304234251) do
 
   create_table "ads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "source"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "ads_relations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "country_config_id"
+    t.integer  "ad_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  create_table "country_configs", force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=latin1" do |t|
+    t.string  "iso",       limit: 2,  null: false
+    t.string  "name",      limit: 80, null: false
+    t.string  "nicename",  limit: 80, null: false
+    t.string  "iso3",      limit: 3
+    t.integer "numcode",   limit: 2
+    t.integer "phonecode",            null: false
   end
 
 end

@@ -15,6 +15,7 @@ class AdsController < ApplicationController
 
   # POST /ads
   def create
+    # return render json: {message:'no'}
     @ad = Ad.new(ad_params)
 
     if @ad.save
@@ -46,6 +47,6 @@ class AdsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def ad_params
-      params.require(:ad).permit(:name, :source)
+      params.permit(:name, :source)
     end
 end
