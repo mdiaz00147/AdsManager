@@ -28,4 +28,17 @@ class CountryConfigsController < ApplicationController
 		return render json: country_ads_fix
 
 	end
+	def index_count
+		@ads = CountryConfig.select(:id,:name,:iso)
+		ad_fixed	=	[]
+		@ads.each do |ad|
+			ad_country_iso		=	ad.iso
+			ad_country_count	=	ad.ads_hits.count
+			ad 	=	ad.attributes
+			ad['country']	=	ad_country_iso
+			ad['total']	=	ad_country_count
+			ad_fixed	<< 	ad
+		end
+		render json: ad_fixed
+	end
 end

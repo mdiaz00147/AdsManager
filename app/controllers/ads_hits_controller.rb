@@ -3,7 +3,7 @@ class AdsHitsController < ApplicationController
 
   # GET /ads_hits
   def index
-    @ads_hits = AdsHit.all
+    @ads_hits = AdsHit.where
 
     render json: @ads_hits
   end
