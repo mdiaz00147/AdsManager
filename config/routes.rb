@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   get	'/countries', to: 'country_configs#index'
   get 	'/countries/count', to: 'country_configs#index_count'
   get 	'/country/ads/:iso', to: 'country_configs#show'
+  get	'/ads/action/count', to: 'ads#index_count'
 end

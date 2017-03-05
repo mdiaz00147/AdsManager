@@ -38,7 +38,17 @@ class AdsController < ApplicationController
   def destroy
     @ad.destroy
   end
-
+  def index_count
+    ads  = Ad.all
+    ads_fixed = []
+    ads.each do |ad|
+      ad_count  = ad.ads_hits.count
+      ad  = ad.attributes
+      ad['total'] = ad_count
+      ads_fixed << ad
+    end
+    render json: ads_fixed
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ad
