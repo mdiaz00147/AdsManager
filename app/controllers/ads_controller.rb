@@ -39,15 +39,17 @@ class AdsController < ApplicationController
     @ad.destroy
   end
   def index_count
-    ads  = Ad.all
-    ads_fixed = []
-    ads.each do |ad|
-      ad_count  = ad.ads_hits.count
-      ad  = ad.attributes
-      ad['total'] = ad_count
-      ads_fixed << ad
-    end
-    render json: ads_fixed
+    # ads  = Ad.all
+    # ads_fixed = []
+    # ads.each do |ad|
+    #   ad_count  = ad.ads_hits.count
+    #   ad  = ad.attributes
+    #   ad['total'] = ad_count
+    #   ads_fixed << ad
+    # end
+    # render json: ads_fixed
+    ad_fixed  = Ad.joins(:ads_hits).all.group(:id).group(:name,:source).size
+    render json: ad_fixed
   end
   private
     # Use callbacks to share common setup or constraints between actions.
