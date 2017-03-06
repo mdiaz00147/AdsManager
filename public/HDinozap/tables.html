@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lumino - Tables</title>
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/datepicker3.css" rel="stylesheet">
+<link href="css/bootstrap-table.css" rel="stylesheet">
+<link href="css/styles.css" rel="stylesheet">
+
+<!--Icons-->
+<script src="js/lumino.glyphs.js"></script>
+<script src="node_modules/react/dist/react.js"></script>
+<script src="node_modules/react-dom/dist/react-dom.min.js"></script>
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="js/sections/Stats.js"></script>
+<script src="js/sections/Spa-links.js"></script>
+<script src="js/sections/Ads.js"></script>
+<!--[if lt IE 9]>
+<script src="js/html5shiv.js"></script>
+<script src="js/respond.min.js"></script>
+<![endif]-->
+<script src="https://use.fontawesome.com/5ea2e3406b.js"></script>
+</head>
+
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"><span>Dinozap</span>Admin</a>
+				<ul class="user-menu">
+					<li class="dropdown pull-right">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> User <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Profile</a></li>
+							<li><a href="#"><svg class="glyph stroked gear"><use xlink:href="#stroked-gear"></use></svg> Settings</a></li>
+							<li><a href="#"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Logout</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+							
+		</div><!-- /.container-fluid -->
+	</nav>
+		
+	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+		<form role="search">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Search">
+			</div>
+		</form>
+		<ul class="nav menu">
+			<li><a href="index.html"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Dashboard</a></li>
+			
+			<li>
+				<a href="#ads-listing" id="ads-listing-link"><svg class="glyph desktop computer and mobile"><use xlink:href="#stroked-desktop-computer-and-mobile"></use></svg>
+				 Anuncios</a>
+			</li>
+			<li >
+				<a href="#stats" id="stats-link"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Estadisticas</a>
+			</li>
+			
+			
+			
+			<li role="presentation" class="divider"></li>
+			<li><a href="login.html"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Login Page</a></li>
+		</ul>
+		<div class="attribution">APP by <a href="http://www.medialoot.com/item/lumino-admin-bootstrap-template/">Mario</a></div>
+	</div><!--/.sidebar-->
+		
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+		<div id="ads-listing" >
+			<div class="row">
+			<ol class="breadcrumb">
+				<li><a href="#stats" id="stats-link"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
+				<li class="active">Anuncios</li>
+			</ol>
+			</div><!--/.row-->
+		
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">Anuncios activos</h1>
+				</div>
+			</div><!--/.row-->
+				
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">Impresiones por anuncio</div>
+					<div class="panel-body">
+						<div class="col-lg-6 col-lg-offset-3" id="someSpinnerImage-3">
+							<div class=" text-center">
+							<div class="row">
+							<i class='fa fa-spinner fa-spin' style="font-size: 35px"></i>
+							</div>
+							<div class="row">
+							<h2>
+								Cargando lista de anuncios
+							</h2>
+							</div>
+							</div>
+						</div>
+						<div id="table-data-3">
+						<div class="table-responsive">
+							<table class="table table-striped" >
+							    <thead class="thead-inverse">
+							    <tr>
+							        <th>ID</th>
+							        <th >Nombre</th>
+							        <th >URL</th>
+							        <th>Acciones</th>
+							    </tr>
+							    </thead>
+							    <tbody id="AdsList">
+							    	
+							    </tbody>
+							</table>
+						</div>
+						</div>
+						
+					</div>
+				</div>
+			  </div>
+			</div><!--/.row-->
+		</div>
+		<div id="stats" class="hidden">			
+		<div class="row">
+			<ol class="breadcrumb">
+				<li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
+				<li class="active">Estadisticas</li>
+			</ol>
+		</div><!--/.row-->
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">Estadisticas para anuncios</h1>
+			</div>
+		</div><!--/.row-->
+				
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">Impresiones por anuncio</div>
+					<div class="panel-body">
+						<div class="col-lg-6 col-lg-offset-3" id="someSpinnerImage-1">
+							<div class=" text-center">
+							<div class="row">
+							<i class='fa fa-spinner fa-spin' style="font-size: 35px"></i>
+							</div>
+							<div class="row">
+							<h2>
+								Cargando datos de anuncios
+							</h2>
+							</div>
+							</div>
+						</div>
+						<div id="table-data">
+						<div class="table-responsive">
+							<table class="table table-striped" >
+							    <thead class="thead-inverse">
+							    <tr>
+							        <th>ID</th>
+							        <th >Empresa</th>
+							        <th >Impresiones</th>
+							    </tr>
+							    </thead>
+							    <tbody id="CountryImp">
+							    	
+							    </tbody>
+							</table>
+						</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div><!--/.row-->	
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">Impresiones por pais</div>
+					<div class="panel-body">
+						<div class="col-lg-6 col-lg-offset-3">
+							<div class=" text-center" id="someSpinnerImage-2">
+							<div class="row">
+							<i class='fa fa-spinner fa-spin' style="font-size: 35px"></i>
+							</div>
+							<div class="row">
+							<h2>
+								Cargando datos por pais
+							</h2>
+							</div>
+							</div>
+						</div>
+						<div id="table-data-2">
+						<div class="table-responsive">
+							<table class="table table-striped" >
+							    <thead class="thead-inverse">
+							    <tr>
+							        <th>ID</th>
+							        <th >Codigo ISO</th>
+							        <th >Nombre</th>
+							        <th >Impresiones</th>
+							    </tr>
+							    </thead>
+							    <tbody id="CountryImp2">
+							    	
+							    </tbody>
+							</table>
+						</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div><!--/.row-->	
+		
+		</div>	
+	</div><!--/.main-->
+
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/chart.min.js"></script>
+	<script src="js/chart-data.js"></script>
+	<script src="js/easypiechart.js"></script>
+	<script src="js/easypiechart-data.js"></script>
+	<script src="js/bootstrap-datepicker.js"></script>
+	<script src="js/bootstrap-table.js"></script>
+	<script>
+		!function ($) {
+			$(document).on("click","ul.nav li.parent > a > span.icon", function(){		  
+				$(this).find('em:first').toggleClass("glyphicon-minus");	  
+			}); 
+			$(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+		}(window.jQuery);
+
+		$(window).on('resize', function () {
+		  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
+		})
+		$(window).on('resize', function () {
+		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
+		})
+	</script>	
+</body>
+
+</html>
