@@ -40,6 +40,6 @@ class CountryConfigsController < ApplicationController
 		# 	ad_fixed	<< 	ad
 		# end
 		ad_fixed	=	CountryConfig.joins(:ads_hits).all.group(:id,:iso).group(:nicename).size
-		render json: ad_fixed
+		render json: Array(ad_fixed)
 	end
 end
