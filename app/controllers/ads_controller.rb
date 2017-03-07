@@ -3,8 +3,16 @@ class AdsController < ApplicationController
 
   # GET /ads
   def index
-    @ads = Ad.all.order(id: :desc)
-    render json: @ads
+    ads = Ad.all.order(id: :desc)
+    ads_fix = []
+    ads.each do |ad|
+      ad_countries  = ad.ads_relations
+      ad  = ad.attributes
+      ad['countries'] = ad_countries
+      ads_fix << ad
+    end
+    render json: ads_fix
+
   end
 
   # GET /ads/1
