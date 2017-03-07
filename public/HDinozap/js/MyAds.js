@@ -1,7 +1,6 @@
 $(document).ready( function() {
 	var CounryIsoCode	=	'';
-	var BaseURL	=	'http://ads.ppbox.club';
-	 $.getJSON("http://freegeoip.net/json/", function(result){
+	$.getJSON("http://freegeoip.net/json/", function(result){
     	CounryIsoCode = result.country_code;
     }).done(function(){
 		$.getJSON(BaseURL + "/country/ads/" + CounryIsoCode, function(result){

@@ -1,3 +1,6 @@
+// var BaseURL	=	'http://localhost:3000';
+var BaseURL	=	'http://ads.ppbox.club';
+
 $.getScript("/../js/sections/Stats.js");
 $.getScript("/../js/sections/Ads.js");
 

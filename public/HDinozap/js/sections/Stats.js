@@ -1,5 +1,3 @@
-var BaseURL	=	'http://ads.ppbox.club';
-
 function GetAdsCount (){
 	$('#table-data').hide();
 	$('#table-data-2').hide();
