@@ -3,8 +3,7 @@ class AdsController < ApplicationController
 
   # GET /ads
   def index
-    @ads = Ad.all
-
+    @ads = Ad.all.order(id: :desc)
     render json: @ads
   end
 
@@ -15,9 +14,8 @@ class AdsController < ApplicationController
 
   # POST /ads
   def create
-    # return render json: {message:'no'}
+    # return render json: params
     @ad = Ad.new(ad_params)
-
     if @ad.save
       render json: @ad, status: :created, location: @ad
     else
