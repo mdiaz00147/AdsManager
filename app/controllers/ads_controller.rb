@@ -36,7 +36,7 @@ class AdsController < ApplicationController
     if @ad.save
       if country_relations.present?
         country_relations.each do |country|
-          ad_relation = AdsRelation.new(country_config_id: country[0],
+          ad_relation = AdsRelation.new(country_config_id: country[1],
             ad_id: @ad.id)
           ad_relation.save
         end
