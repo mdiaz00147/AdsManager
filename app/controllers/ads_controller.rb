@@ -30,9 +30,8 @@ class AdsController < ApplicationController
 
   # POST /ads
   def create
-
     country_relations = params[:countries]
-    # return render json: country_relations
+    return render json: country_relations
     @ad = Ad.new(ad_params)
     if @ad.save
       if country_relations.present?
