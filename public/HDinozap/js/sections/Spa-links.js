@@ -1,8 +1,9 @@
-// var BaseURL	=	'http://localhost:3000';
-var BaseURL	=	'http://ads.ppbox.club';
+var BaseURL	=	'http://localhost:3000';
+// var BaseURL	=	'http://ads.ppbox.club';
 
 $.getScript("js/sections/Stats.js");
 $.getScript("js/sections/Ads.js");
+$.getScript("js/sections/Helpers/Ads.js");
 
 $(document).ready( function() {
 	IndexPage();
@@ -23,6 +24,7 @@ $(document).ready( function() {
 	}
 	function IndexPage(url){
 		GetListAds();
+		ListCountries();
 	}
 	
 	

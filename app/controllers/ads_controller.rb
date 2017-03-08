@@ -7,8 +7,16 @@ class AdsController < ApplicationController
     ads_fix = []
     ads.each do |ad|
       ad_countries  = ad.ads_relations
+      
       ad  = ad.attributes
-      ad['countries'] = ad_countries
+      ad_countries_fix  = []
+      ad_countries.each do |country|
+        countryIso = country.country_config.nicename
+        country   = country.attributes
+        country['iso'] = countryIso
+        ad_countries_fix << country
+      end
+      ad['countries'] = ad_countries_fix
       ads_fix << ad
     end
     render json: ads_fix
@@ -22,9 +30,18 @@ class AdsController < ApplicationController
 
   # POST /ads
   def create
-    # return render json: params
+
+    country_relations = params[:countries]
+    # return render json: country_relations
     @ad = Ad.new(ad_params)
     if @ad.save
+      if country_relations.present?
+        country_relations.each do |country|
+          ad_relation = AdsRelation.new(country_config_id: country[0],
+            ad_id: @ad.id)
+          ad_relation.save
+        end
+      end
       render json: @ad, status: :created, location: @ad
     else
       render json: @ad.errors, status: :unprocessable_entity

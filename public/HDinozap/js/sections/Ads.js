@@ -7,8 +7,11 @@ function GetListAds (){
 		$("#someSpinnerImage-3").show();
 
     	result.forEach(function( index , i) {
-            console.log(index.countries);
-    		$('#AdsList').append('<tr><td>'+ (i+1) +'</td><td>'+	index.name +'</td><td>'+	index.source +'</td><td></td>'+ index.countries +'<td><a class="btn btn-primary btn-xs"><svg class="glyph stroked pencil " style="height:20px;width:20px"><use xlink:href="#stroked-pencil"/></svg></a><a class="btn btn-xs btn-danger" onclick="DeleteAd('+index.id+');"><svg class="glyph stroked cancel" style="height:20px;width:20px"><use xlink:href="#stroked-cancel"/></svg></a></td></tr>')
+            var ad_countries    =   [];
+            index.countries.forEach(function(index2, i){
+                ad_countries    +=   '<a class="col-md-12">'+ index2.iso +'</a>';
+            });
+    		$('#AdsList').append('<tr><td>'+ (i+1) +'</td><td>'+	index.name +'</td><td>'+	index.source +'</td><td class="text-left">'+ ad_countries +'</td><td><a class="btn btn-primary btn-xs"><svg class="glyph stroked pencil " style="height:20px;width:20px"><use xlink:href="#stroked-pencil"/></svg></a><a class="btn btn-xs btn-danger" onclick="DeleteAd('+index.id+');"><svg class="glyph stroked cancel" style="height:20px;width:20px"><use xlink:href="#stroked-cancel"/></svg></a></td></tr>')
     	});
     	$("#someSpinnerImage-3").hide(); 	
     	$('#table-data-3').show();
@@ -22,7 +25,11 @@ function RefreshListAds(){
         $("#someSpinnerImage-3").show();
 
         result.forEach(function( index , i) {
-            $('#AdsList').append('<tr><td>'+ (i+1) +'</td><td>'+    index.name +'</td><td>'+    index.source +'</td><td><a class="btn btn-primary btn-xs"><svg class="glyph stroked pencil " style="height:20px;width:20px"><use xlink:href="#stroked-pencil"/></svg></a><a class="btn btn-xs btn-danger" onclick="DeleteAd('+index.id+');"><svg class="glyph stroked cancel" style="height:20px;width:20px"><use xlink:href="#stroked-cancel"/></svg></a></td></tr>')
+            var ad_countries    =   [];
+            index.countries.forEach(function(index2, i){
+                ad_countries    +=   '<a class="col-md-12">'+ index2.iso +'</a>';
+            });
+            $('#AdsList').append('<tr><td>'+ (i+1) +'</td><td>'+    index.name +'</td><td>'+    index.source +'</td><td class="text-left">'+ ad_countries +'</td><td><a class="btn btn-primary btn-xs"><svg class="glyph stroked pencil " style="height:20px;width:20px"><use xlink:href="#stroked-pencil"/></svg></a><a class="btn btn-xs btn-danger" onclick="DeleteAd('+index.id+');"><svg class="glyph stroked cancel" style="height:20px;width:20px"><use xlink:href="#stroked-cancel"/></svg></a></td></tr>')
         });
         $("#someSpinnerImage-3").hide();    
         $('#table-data-3').show();
